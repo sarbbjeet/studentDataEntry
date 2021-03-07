@@ -21,7 +21,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_NAME = "name";
     public static final String CONTACTS_COLUMN_AGE = "age";
     public static final String CONTACTS_COLUMN_STUDENT_ID = "studentID";
-    studentModule studentModle;
+    //studentModule studentModle;
 
 
     public databaseHelper(@Nullable Context context) {
@@ -47,6 +47,7 @@ public class databaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS contacts");
         onCreate(db);
     }
+
 
     //method to insert data in the database
     public boolean insertContact(studentModule studentmodel){
@@ -78,15 +79,28 @@ public class databaseHelper extends SQLiteOpenHelper {
                String studentName= cursor.getString(1);
                Integer studentAge= cursor.getInt(2);
                Long studentId= cursor.getLong(3);
-               studentModle= new studentModule(id,studentName,studentAge,studentId);
+              studentModule studentModle= new studentModule(id,studentName,studentAge,studentId);
                returnList.add(studentModle);
 
            }while (cursor.moveToNext());
-
+          db.close();
        }
 
        //return student contacts array
         return returnList;
+    }
+
+    //delete database contact(student entry)
+    public boolean deleteOne(studentModule studentModle){
+        String query= "delete from " + CONTACTS_TABLE_NAME + " where " + CONTACTS_COLUMN_ID + " = " + studentModle.getId();
+        SQLiteDatabase db = this.getWritableDatabase();
+         Cursor cursor= db.rawQuery(query,null);
+         if(cursor.moveToFirst()){
+             return false;
+         }
+         else{
+             return true;
+         }
     }
 
 
