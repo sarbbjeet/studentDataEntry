@@ -120,6 +120,7 @@
             android:textSize="15sp"
             android:layout_weight="50"
             android:layout_marginHorizontal="10dp"
+            android:id="@+id/btnAdd"
             />
         <Button
             android:layout_width="0dp"
@@ -128,6 +129,7 @@
             android:textSize="15sp"
             android:layout_weight="50"
             android:layout_marginHorizontal="10dp"
+            android:id="@+id/btnViewAll"
             />
 
     </LinearLayout>
