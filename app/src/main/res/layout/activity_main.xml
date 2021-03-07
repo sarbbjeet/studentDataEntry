@@ -1,18 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/colorScreen"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layoutName"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="25"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/editTextStyle"
+            android:layout_marginBottom="10dp"
+            android:hint="student name"
+            android:layout_weight="70"
+            android:id="@+id/et_name"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layoutAge"
+        android:layout_below="@id/layoutName"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Age:"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="25"
+
+            />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/editTextStyle"
+            android:layout_marginBottom="10dp"
+            android:hint="student age"
+            android:layout_weight="70"
+            android:inputType="number"
+            android:id="@+id/et_age"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layoutId"
+        android:layout_below="@id/layoutAge"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Id:"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="25"
+            />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/editTextStyle"
+            android:layout_marginBottom="10dp"
+            android:hint="student id"
+            android:layout_weight="70"
+            android:inputType="number"
+            android:id="@+id/et_id"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/layoutbtns"
+        android:layout_below="@id/layoutId"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:textSize="15sp"
+            android:layout_weight="50"
+            android:layout_marginHorizontal="10dp"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="View All"
+            android:textSize="15sp"
+            android:layout_weight="50"
+            android:layout_marginHorizontal="10dp"
+            />
+
+    </LinearLayout>
+
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/layoutbtns"
+    android:layout_margin="10dp"
+    android:id="@+id/lv_databaseList"
+    >
+</ListView>
+
+</RelativeLayout>
