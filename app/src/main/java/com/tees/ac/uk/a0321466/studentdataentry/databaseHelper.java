@@ -2,11 +2,15 @@ package com.tees.ac.uk.a0321466.studentdataentry;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class databaseHelper extends SQLiteOpenHelper {
 
@@ -17,6 +21,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_NAME = "name";
     public static final String CONTACTS_COLUMN_AGE = "age";
     public static final String CONTACTS_COLUMN_STUDENT_ID = "studentID";
+    studentModule studentModle;
 
 
     public databaseHelper(@Nullable Context context) {
@@ -43,6 +48,7 @@ public class databaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //method to insert data in the database
     public boolean insertContact(studentModule studentmodel){
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues cv= new ContentValues();
@@ -57,4 +63,31 @@ public class databaseHelper extends SQLiteOpenHelper {
         return true;
     }
     }
+
+    //get data or view data stored in the database table
+
+    public List<studentModule> viewAll(){
+        //define list type
+        List<studentModule> returnList= new ArrayList<>();
+        String getQuery= "select * from " + CONTACTS_TABLE_NAME;
+        SQLiteDatabase db =this.getReadableDatabase();
+        Cursor cursor= db.rawQuery(getQuery,null);
+       if(cursor.moveToFirst()){
+           do{
+               int id= cursor.getInt(0);
+               String studentName= cursor.getString(1);
+               Integer studentAge= cursor.getInt(2);
+               Long studentId= cursor.getLong(3);
+               studentModle= new studentModule(id,studentName,studentAge,studentId);
+               returnList.add(studentModle);
+
+           }while (cursor.moveToNext());
+
+       }
+
+       //return student contacts array
+        return returnList;
+    }
+
+
 }
