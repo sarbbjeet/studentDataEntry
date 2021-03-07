@@ -88,12 +88,15 @@ public class MainActivity extends AppCompatActivity {
         //listview click listener
         lv_StudentEntries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 studentModule clickedStudent= (studentModule) parent.getItemAtPosition(position);
                 if(databasehandler.deleteOne(clickedStudent)){
                     Toast.makeText(MainActivity.this,clickedStudent.getName()+ " student is delete from database", Toast.LENGTH_SHORT).show();
                     //update the listview items
                     viewAllF();
+
+
+
                 }
                 else{
                     Toast.makeText(MainActivity.this,"Error to delete " + clickedStudent.getName() + " from database", Toast.LENGTH_SHORT).show();
